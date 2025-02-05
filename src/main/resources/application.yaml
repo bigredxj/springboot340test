@@ -5,7 +5,7 @@ spring:
     username: root
     password: 123456
 server:
-  port: 3030
+  port: 3333
 logging:
   file:
     name: spring_log.log
