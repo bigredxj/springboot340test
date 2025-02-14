@@ -1,11 +1,14 @@
+server:
+  port: 3333
+  servlet:
+    context-path: /sp3
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     jdbc-url: jdbc:mysql://110.110.110.100:3306/xujing?useSSL=false
     username: root
     password: 123456
-server:
-  port: 3333
+
 logging:
   file:
     name: spring_log.log

@@ -8,10 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-    @GetMapping(value = "/hello")
-    public String hello(){
+    @GetMapping(value = "/health")
+    public void health(){
+
+    }
+
+    @GetMapping(value = "/user")
+    public User hello(){
         User user = new User();
-        user.setName("hello");
-        return user.getName();
+        user.setName("小明");
+        user.setAge(30);
+        return user;
     }
 }
