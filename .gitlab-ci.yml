@@ -10,15 +10,16 @@ build_job:
     - local
   script:
     - echo "Building the app..."
-    # 在这里添加你的构建命令，比如编译代码、打包应用等
     - gradle build
 
 # 测试阶段
 test_job:
   stage: test
+  tags:
+    - local
   script:
     - echo "Running tests..."
-    # 在这里添加你的测试命令，比如运行单元测试、集成测试等
+    - gradle build
 
 # 部署阶段
 deploy_job:
@@ -27,7 +28,6 @@ deploy_job:
     - local
   script:
     - echo "Deploying the app..."
-    # 在这里添加你的部署命令，比如将应用部署到服务器、更新配置等
     -  gradle bootJar
   only:
     - master  # 只在master分支上进行部署
