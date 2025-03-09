@@ -35,5 +35,5 @@ deploy_job:
     - master  # 只在master分支上进行部署
   artifacts:
     paths:
-      - #会把build/libs/springboot340Test-0.0.1.jar压缩成artifacts.zip
+     #会把build/libs/springboot340Test-0.0.1.jar压缩成artifacts.zip
       - build/libs/springboot340Test-0.0.1.jar
