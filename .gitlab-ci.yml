@@ -1,4 +1,8 @@
 image: 110.110.110.101:5000/centos7-dev:2.0
+services:
+  - name: runner-builds
+    volumes:
+      - /mnt/disk2/test/builds:/builds
 stages:
   - build
   - test
