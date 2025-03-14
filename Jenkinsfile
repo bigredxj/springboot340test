@@ -6,13 +6,12 @@ pipeline {
         }
     }
     environment {
-       GRADLE_USER_HOME=/java-repository
-    }
-
+           GRADLE_USER_HOME=/java-repository
+        }
     stages {
         stage('Build') {
             steps {
-                sh 'gradle bootJar'
+                sh 'gradle build'
             }
         }
     }
