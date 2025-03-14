@@ -1,4 +1,4 @@
-image: centos7-dev:2.0
+image: centos8-dev:2.0
 
 stages:
   - build
