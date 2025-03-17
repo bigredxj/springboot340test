@@ -9,7 +9,8 @@ plugins {
     id("maven-publish")
     id("org.example.plugin") version "3.0.0"
     id("com.netflix.nebula.ospackage") version "11.11.1"
-    id("com.bmuschko.docker-remote-api") version  "9.4.0"
+    id("com.bmuschko.docker-remote-api") version "9.4.0"
+
 }
 group = "com.example"
 version = "0.0.1"
@@ -43,7 +44,6 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     implementation("io.micrometer:micrometer-registry-prometheus:1.15.0-M2")
-    implementation("com.bmuschko:gradle-docker-plugin:6.7.0")
 
 }
 
@@ -145,22 +145,8 @@ tasks.named("classes") {
     //dependsOn("commonLogbackConfig")
 }
 
-
-// 创建构建镜像任务
-tasks.register<DockerBuildImage>("myBuildImage") {
-    dependsOn(tasks.bootJar)
-
-    // 指定构建镜像的context目录
+tasks.create("buildMyAppImage", DockerBuildImage::class) {
     inputDir.set(project.projectDir)
     dockerFile.set(project.projectDir.resolve("Dockerfile"))
-    buildArgs.put("BASE_IMAGE", "110.110.110.101:5000/centos7-java17:latest")
-
-    // 镜像名称
-    images.add("110.110.110.101:5000/my-sp34:3.0.0")
-}
-
-// 创建推送镜像任务
-tasks.register<DockerPushImage>("myPushImage") {
-    dependsOn("myBuildImage")
     images.add("110.110.110.101:5000/my-sp34:3.0.0")
 }

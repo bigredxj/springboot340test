@@ -1,6 +1,4 @@
-ARG BASE_IMAGE
-
-FROM $BASE_IMAGE
+FROM 110.110.110.101:5000/centos7-java17:latest
 
 # 设置工作目录
 WORKDIR /app
