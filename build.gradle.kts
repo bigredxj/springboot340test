@@ -43,7 +43,7 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     implementation("io.micrometer:micrometer-registry-prometheus:1.15.0-M2")
-    implementation("com.bmuschko:gradle-docker-plugin:9.4.0")
+    implementation("com.bmuschko:gradle-docker-plugin:6.7.0")
 
 }
 
