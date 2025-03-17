@@ -157,7 +157,7 @@ tasks.create("myBuildImage", DockerBuildImage::class) {
     images.add("110.110.110.101:5000/my-sp34:3.0.0")
 }
 
-tasks.create("myPushImage", DockerBuildImage::class) {
+tasks.create("myPushImage", DockerPushImage::class) {
     dependsOn("myBuildImage")
     images.add("110.110.110.101:5000/my-sp34:3.0.0")
 }
