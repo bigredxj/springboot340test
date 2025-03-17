@@ -27,7 +27,7 @@ test_job:
 deploy_job:
   stage: deploy
   tags:
-    - local-docker
+    - local
   script:
     - echo "Deploying the app..."
     -  gradle myPushImage
