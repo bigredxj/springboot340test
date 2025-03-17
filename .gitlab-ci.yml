@@ -1,15 +1,15 @@
 image: centos8-dev:2.0
 
 stages:
-#  - build
-#  - test
+  - build
+  - test
   - deploy
 
 # 构建阶段
 build_job:
   stage: build
   tags:
-    - local-docker
+    - local
   script:
     - echo "Building the app..."
 #   - gradle build
@@ -18,7 +18,7 @@ build_job:
 test_job:
   stage: test
   tags:
-    - local-docker
+    - local
   script:
     - echo "Running tests..."
 #    - gradle test
