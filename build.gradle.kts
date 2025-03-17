@@ -10,7 +10,6 @@ plugins {
     id("org.example.plugin") version "3.0.0"
     id("com.netflix.nebula.ospackage") version "11.11.1"
     id("com.bmuschko.docker-remote-api") version  "9.4.0"
-    id("com.bmuschko:gradle-docker-plugin") version  "9.4.0"
 }
 group = "com.example"
 version = "0.0.1"
@@ -44,6 +43,8 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     implementation("io.micrometer:micrometer-registry-prometheus:1.15.0-M2")
+    implementation("com.bmuschko:gradle-docker-plugin:9.4.0")
+
 }
 
 tasks.withType<Test> {
