@@ -1,8 +1,8 @@
 image: centos8-dev:2.0
 
 stages:
-  - build
-  - test
+#  - build
+#  - test
   - deploy
 
 # 构建阶段
@@ -30,7 +30,7 @@ deploy_job:
     - local-docker
   script:
     - echo "Deploying the app..."
-    -  gradle bootJar
+    -  gradle myPushImage
   only:
     - master  # 只在master分支上进行部署
   artifacts:
