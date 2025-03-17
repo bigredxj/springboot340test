@@ -145,13 +145,19 @@ tasks.named("classes") {
     //dependsOn("commonLogbackConfig")
 }
 
-tasks.create("buildMyAppImage", DockerBuildImage::class) {
+
+docker {
+    url.set("http://110.110.110.101:2375")
+}
+
+tasks.create("myBuildImage", DockerBuildImage::class) {
     dependsOn(tasks.bootJar)
     inputDir.set(project.projectDir)
     dockerFile.set(project.projectDir.resolve("Dockerfile"))
     images.add("110.110.110.101:5000/my-sp34:3.0.0")
 }
 
-docker {
-    url.set("http://110.110.110.101:2375")
+tasks.create("myPushImage", DockerBuildImage::class) {
+    dependsOn("myBuildImage")
+    images.add("110.110.110.101:5000/my-sp34:3.0.0")
 }

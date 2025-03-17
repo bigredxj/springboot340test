@@ -30,7 +30,7 @@ deploy_job:
     - local
   script:
     - echo "Deploying the app..."
-    -  gradle buildMyAppImage
+    -  gradle myPushImage
   only:
     - master  # 只在master分支上进行部署
   artifacts:
