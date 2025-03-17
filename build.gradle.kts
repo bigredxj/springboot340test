@@ -146,6 +146,7 @@ tasks.named("classes") {
 }
 
 tasks.create("buildMyAppImage", DockerBuildImage::class) {
+    dependsOn(tasks.bootJar)
     inputDir.set(project.projectDir)
     dockerFile.set(project.projectDir.resolve("Dockerfile"))
     images.add("110.110.110.101:5000/my-sp34:3.0.0")
