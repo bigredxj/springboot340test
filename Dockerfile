@@ -1,4 +1,4 @@
-FROM 110.110.110.101:5000/centos7-java17:latest
+FROM 110.110.110.101:5000/centos7-dev:1.0
 
 # 设置工作目录
 WORKDIR /app
