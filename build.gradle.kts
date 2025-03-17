@@ -10,6 +10,7 @@ plugins {
     id("org.example.plugin") version "3.0.0"
     id("com.netflix.nebula.ospackage") version "11.11.1"
     id("com.bmuschko.docker-remote-api") version  "9.4.0"
+    id("com.bmuschko:gradle-docker-plugin") version  "9.4.0"
 }
 group = "com.example"
 version = "0.0.1"
