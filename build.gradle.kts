@@ -151,3 +151,7 @@ tasks.create("buildMyAppImage", DockerBuildImage::class) {
     dockerFile.set(project.projectDir.resolve("Dockerfile"))
     images.add("110.110.110.101:5000/my-sp34:3.0.0")
 }
+
+docker {
+    url.set("http://110.110.110.101:2375")
+}
