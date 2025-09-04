@@ -7,7 +7,7 @@ plugins {
     id("org.springframework.boot") version "3.4.0"
     id("io.spring.dependency-management") version "1.1.6"
     id("maven-publish")
-    id("org.example.plugin") version "3.0.0"
+   // id("org.example.plugin") version "3.0.0"
     id("com.netflix.nebula.ospackage") version "11.11.1"
     id("com.bmuschko.docker-remote-api") version "9.4.0"
 
@@ -15,26 +15,14 @@ plugins {
 group = "com.example"
 version = "0.0.1"
 
-repositories {
-    maven {
-        url = uri("https://maven.aliyun.com/nexus/content/groups/public/")
-    }
-    maven {
-        url = uri("http://110.110.110.100:8081/repository/maven-releases/")
-        isAllowInsecureProtocol = true
-    }
-
-    mavenCentral()
-}
-
 dependencies {
-    implementation("org.example:my-plugin:3.0.0")
+   // implementation("org.example:my-plugin:3.0.0")
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-web"){
      //   exclude("org.springframework.boot", "spring-boot-starter-logging")
     }
-    implementation("org.projectlombok:lombok:1.18.22")
+    implementation("org.projectlombok:lombok:1.18.36")
     annotationProcessor("org.projectlombok:lombok:1.18.36")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0")
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4")
@@ -43,7 +31,11 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    implementation("io.micrometer:micrometer-registry-prometheus:1.15.0-M2")
+    implementation("io.micrometer:micrometer-registry-prometheus:1.15.1")
+
+    implementation("com.alibaba:fastjson:2.0.57")
+
+    //implementation("io.micrometer:micrometer-registry-prometheus:1.15.0-M2")
 
 }
 
@@ -147,6 +139,7 @@ tasks.named("classes") {
 
 
 docker {
+    //允许远程客户端通过TCP连接来与Docker守护进程通信
     url.set("http://110.110.110.101:2375")
 }
 
@@ -154,10 +147,10 @@ tasks.create("myBuildImage", DockerBuildImage::class) {
     dependsOn(tasks.bootJar)
     inputDir.set(project.projectDir)
     dockerFile.set(project.projectDir.resolve("Dockerfile"))
-    images.add("110.110.110.101:5000/my-sp34:3.0.0")
+    images.add("110.110.110.101:5000/my-sp34:3.0.4")
 }
 
 tasks.create("myPushImage", DockerPushImage::class) {
     dependsOn("myBuildImage")
-    images.add("110.110.110.101:5000/my-sp34:3.0.0")
+    images.add("110.110.110.101:5000/my-sp34:3.0.4")
 }

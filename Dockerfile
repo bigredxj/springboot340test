@@ -1,6 +1,6 @@
 FROM 110.110.110.101:5000/centos7-dev:1.0
 
-LABEL "org.opencontainers.image.ref.name"="my-sp34:3.0.0" "image.author"="xuxu"
+LABEL org.opencontainers.image.ref.name="my-sp34:3.0.0" image.author="xuxu"
 # 设置工作目录
 WORKDIR /app
 

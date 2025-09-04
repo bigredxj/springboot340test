@@ -5,8 +5,119 @@
 <!-- namespace = 接口的全限定符 -->
 <mapper namespace="com.example.springboot340test.mapper.UserMapper">
 
-    <select id="queryAll" resultType="com.example.springboot340test.bean.User">
-        select * from user
+    <resultMap id="BaseResultMap" type="com.example.springboot340test.object.po.UserPO">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="roleId" column="role_id"/>
+        <result property="sex" column="sex"/>
+        <result property="birthDate" column="birth_date"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        `id` as `id`,
+        `name` as `name`,
+        `role_id` as `roleId`,
+        `sex` as `sex`,
+        `birth_date` as `birthDate`
+    </sql>
+    <!--INSERT-->
+    <insert id="insertUser" parameterType="com.example.springboot340test.object.po.UserPO" keyProperty="id" useGeneratedKeys="true">
+        insert into user(`id`,`name`,`role_id`,`sex`,`birth_date`)
+        values
+        (#{id},#{name},#{roleId},#{sex},#{birthDate})
+    </insert>
+    <insert id="batchInsertUser" parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+        insert into user(`id`,`name`,`role_id`,`sex`,`birth_date`)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id},#{item.name},#{item.roleId},#{item.sex},#{item.birthDate})
+        </foreach>
+    </insert>
+    <!--DELETE-->
+    <delete id="deleteUserById" parameterType="java.lang.Integer">
+        delete from user
+        where
+        id=#{id}
+    </delete>
+    <delete id="deleteUser" parameterType="com.example.springboot340test.object.po.UserPO">
+        delete from user
+        where 1=1
+        <if test="id != null and  id !=''">
+            and `id` = #{id}
+        </if>
+        <if test="name != null and  name !=''">
+            and `name` = #{name}
+        </if>
+        <if test="roleId != null and  roleId !=''">
+            and `role_id` = #{roleId}
+        </if>
+        <if test="sex != null and  sex !=''">
+            and `sex` = #{sex}
+        </if>
+        <if test="birthDate != null and  birthDate !=''">
+            and `birth_date` = #{birthDate}
+        </if>
+
+    </delete>
+    <!--UPDATE-->
+    <update id="updateUserById" parameterType="com.example.springboot340test.object.po.UserPO">
+        update user
+        <set>
+            <if test="id != null and  id !=''">
+                `id` = #{id},
+            </if>
+            <if test="name != null and  name !=''">
+                `name` = #{name},
+            </if>
+            <if test="roleId != null and  roleId !=''">
+                `role_id` = #{roleId},
+            </if>
+            <if test="sex != null and  sex !=''">
+                `sex` = #{sex},
+            </if>
+            <if test="birthDate != null and  birthDate !=''">
+                `birth_date` = #{birthDate}
+            </if>
+        </set>
+        where
+        id=#{id}
+    </update>
+    <!--SELECT-->
+    <select id="getUserById" resultType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        user
+        where id=#{id}    </select>
+    <!--SELECT-->
+    <select id="listUser" resultType="com.example.springboot340test.object.po.UserPO">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        user
+        where 1=1
+        <if test="id != null and  id !=''">
+            and `id` = #{id}
+        </if>
+        <if test="name != null and  name !=''">
+            and `name` = #{name}
+        </if>
+        <if test="roleId != null and  roleId !=''">
+            and `role_id` = #{roleId}
+        </if>
+        <if test="sex != null and  sex !=''">
+            and `sex` = #{sex}
+        </if>
+        <if test="birthDate != null and  birthDate !=''">
+            and `birth_date` = #{birthDate}
+        </if>
+    </select>
+    <select id="listUserByLimit" resultType="com.example.springboot340test.object.po.UserPO">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        user
+        limit #{start},#{end}
     </select>
 
 </mapper>

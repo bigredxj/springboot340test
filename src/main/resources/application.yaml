@@ -4,6 +4,8 @@ server:
     context-path: /sp3
 
 spring:
+  application:
+    name: springboot340Test
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     jdbc-url: jdbc:mysql://110.110.110.100:3306/xujing?useSSL=false
@@ -29,3 +31,8 @@ management:
     metrics:
       export:
         enabled: true
+
+my:
+  name: xujing2
+  age: 30
+  sex: true

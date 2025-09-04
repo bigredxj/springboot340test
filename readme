@@ -1,0 +1,13 @@
+接收参数用DTO
+响应参数用VO
+存数据库用PO
+
+数据库表字段命名用user_email
+
+如果接口出错返回,data可以存放详细错误内容
+HttpStatusCode=500
+{
+  "code": 2,
+  "message": "系统错误,请稍后重试或联系管理员!",
+  "data": {}
+}
