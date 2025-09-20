@@ -16,6 +16,7 @@ group = "com.example"
 version = "0.0.1"
 
 dependencies {
+    implementation(files("D:\\java_code\\javaPractice\\build\\libs\\java-practice-1.0-SNAPSHOT.jar"))
    // implementation("org.example:my-plugin:3.0.0")
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -140,17 +141,17 @@ tasks.named("classes") {
 
 docker {
     //允许远程客户端通过TCP连接来与Docker守护进程通信
-    url.set("http://110.110.110.101:2375")
+    url.set("http://110.110.110.100:2375")
 }
 
 tasks.create("myBuildImage", DockerBuildImage::class) {
     dependsOn(tasks.bootJar)
     inputDir.set(project.projectDir)
     dockerFile.set(project.projectDir.resolve("Dockerfile"))
-    images.add("110.110.110.101:5000/my-sp34:3.0.4")
+    images.add("110.110.110.100:5000/my-sp34:3.0.4")
 }
 
 tasks.create("myPushImage", DockerPushImage::class) {
     dependsOn("myBuildImage")
-    images.add("110.110.110.101:5000/my-sp34:3.0.4")
+    images.add("110.110.110.100:5000/my-sp34:3.0.4")
 }
