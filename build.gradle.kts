@@ -16,8 +16,9 @@ group = "com.example"
 version = "0.0.1"
 
 dependencies {
-    implementation(files("D:\\java_code\\javaPractice\\build\\libs\\java-practice-1.0-SNAPSHOT.jar"))
+    //implementation(files("D:\\java_code\\javaPractice\\build\\libs\\java-practice-1.0-SNAPSHOT.jar"))
    // implementation("org.example:my-plugin:3.0.0")
+    implementation("org.example:java-practice:1.0.0")
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-web"){

@@ -35,13 +35,12 @@ dependencyResolutionManagement {
         maven {
             url = uri("https://maven.aliyun.com/nexus/content/groups/public/")
         }
-        /*
+
         maven {
             url = uri("http://110.110.110.100:8081/repository/maven-releases/")
             isAllowInsecureProtocol = true
         }
 
-         */
         google()
         mavenCentral()
     }
